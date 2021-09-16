@@ -1,0 +1,6 @@
+10110001#Adi Sudrajat#l
+10110002#Adinda#p
+10110005#Cecep Gorbachev#l
+10110006#Udin#p
+10110003#Damri#p
+10110007#Rei#l
