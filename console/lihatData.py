@@ -9,15 +9,8 @@ from objManajemenBerkas import ManajemenBerkas
 
 nmFile = "dataMahasiswa.txt"
 statusFile = ManajemenBerkas(nmFile).PeriksaBerkas()
-#print(statusFile)
 
-if statusFile:
-    file1 = open(nmFile, "r", encoding='utf-8')
-    with file1:
-        # pisah data file per baris dan hapus data kosong
-        isi = file1.read().strip().split("\n")
+mb = ManajemenBerkas(nmFile) 
+data = mb.BacaBerkas() # baca isi file
 
-    file1.close()    
-    print(isi)
-else:
-    print("Berkas tidak terbaca.")
+print(data)
