@@ -30,3 +30,15 @@ class ManajemenBerkas:
             else:
                 return True
             
+class Utilitas:
+    def __init__(self):
+        pass
+    
+    def PeriksaNIM(self, nim):
+        # panjang karakter harus 8
+        if len(nim.strip()) != 8:
+            return False
+        elif not nim.isdigit():
+            return False
+        else:
+            return True
