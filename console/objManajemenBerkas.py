@@ -12,6 +12,7 @@ class ManajemenBerkas:
         self.namaFile = namaFile
         
     def PeriksaBerkas(self):
+        # periksa apakah file valid
         if os.path.isfile(self.namaFile):
             return True
         else:
@@ -50,7 +51,7 @@ class Utilitas:
         # panjang karakter harus 8
         if len(nim.strip()) != 8:
             return False
-        elif not nim.isdigit():
+        elif not nim.isdigit(): # NIM harus berisi bilangan semua
             return False
         else:
             return True
@@ -59,7 +60,8 @@ class Utilitas:
         kembar = False
         dataCari = []
         for i in range(len(daftarMHS)):
-            if daftarMHS[i][0].lower().find(nim) >= 0:
+            # jika NIM yang dicari ditemukan
+            if daftarMHS[i][0].find(nim) >= 0:
                 kembar = True
                 dataCari = daftarMHS[i]
                 break
