@@ -9,17 +9,29 @@ from objManajemenBerkas import ManajemenBerkas, Utilitas
 
 nmFile = "dataMahasiswa.txt"
 statusFile = ManajemenBerkas(nmFile).PeriksaBerkas()
-ut = Utilitas()
-#print(statusFile)
+mb = ManajemenBerkas(nmFile)
+data = mb.BacaBerkas() # baca isi file
+ut = Utilitas() 
 
+# merapikan isi file ke dalam list
+kamus = []
+for i in data:
+    d = i.split("#")
+    kamus.append(d)
+    
 if statusFile:
     file1 = open(nmFile, "a", encoding='utf-8')
     with file1:
         # validasi NIM
         while True:
             nim = input("NIM: ")
+            # periksa format NIM
             if ut.PeriksaNIM(nim):
-                break
+                # periksa apakah NIM sudah terdaftar
+                if ut.PeriksaNIMKembar(nim, kamus):
+                    print("NIM sudah terdaftar.")
+                else:
+                    break
             else:
                 print("Format NIM tidak sesuai.")
                 
@@ -46,6 +58,5 @@ if statusFile:
         file1.write(isi) 
         file1.write("\n")
     file1.close()    
-    #print(isi)
 else:
     print("Berkas tidak terbaca.")
