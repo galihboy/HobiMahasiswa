@@ -37,10 +37,12 @@ if len(dataCari) > 0:
     print(f"Data ditemukan: {dataOutput}")
     # validasi data
     nim, nama, jk = ut.ValidasiDataUpdate(kamus, nimCari)
-    #data.split("#")[0]
-    nimBaru = data[dataCari[0]].split("#")[0] if nim == "-" else nim
-    namaBaru = data[dataCari[0]].split("#")[1] if nama == "-" else nama
-    jkBaru = data[dataCari[0]].split("#")[2] if jk == "-" else jk
+    #split data : [0] nim, [1] nama, [2] jenis kelamin
+    # dataCari[0] -> indeks data cari
+    indeks = dataCari[0]
+    nimBaru = data[indeks].split("#")[0] if nim == "-" else nim
+    namaBaru = data[indeks].split("#")[1] if nama == "-" else nama
+    jkBaru = data[indeks].split("#")[2] if jk == "-" else jk
     # baris data baru
     dataUpdate = "#".join([nimBaru, namaBaru, jkBaru])
     
