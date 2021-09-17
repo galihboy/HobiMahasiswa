@@ -84,6 +84,7 @@ class Utilitas:
             return dataCari
     
     def CariNIM(self, NIM, isiBerkas):
+        # data.split("#")[0] -> kolom NIM
         return [i for i,data in enumerate(isiBerkas) if data.split("#")[0]==NIM]
     
     def CariNama(self, nama, daftarMHS):
@@ -97,7 +98,8 @@ class Utilitas:
     
     def CariNamaBaru(self, nama, isiBerkas):
         nama = nama.lower().strip()
-        return [i for i,x in enumerate(isiBerkas) if nama in x.split("#")[1].lower()]
+        # data.split("#")[1] -> kolom nama
+        return [i for i,data in enumerate(isiBerkas) if nama in data.split("#")[1].lower()]
     
     def LihatDataCari(self, isiBerkas, daftarIndeks):
         data = []
@@ -126,14 +128,15 @@ class Utilitas:
         
         return dataBaru
     
-    def ValidasiData(self, kamus):
+    def ValidasiData(self, isiBerkas):
         # validasi NIM
         while True:
             nim = input("NIM: ")
             # periksa format NIM
             if self.PeriksaNIM(nim):
                 # periksa apakah NIM sudah terdaftar
-                if self.PeriksaNIMKembar(nim, kamus):
+                dataNIM = self.CariNIM(nim, isiBerkas)
+                if len(dataNIM) > 0:
                     print("NIM sudah terdaftar.")
                 else:
                     break
@@ -160,12 +163,12 @@ class Utilitas:
             
         return nim, nama, jk
     
-    def ValidasiDataUpdate(self, kamus):
+    def ValidasiDataUpdate(self, kamus, nimCari):
         # validasi NIM
         print("Kosongkan jika ingin menggunakan data lama.")
         while True:
             nim = input("NIM baru: ")
-            if len(nim.strip()) == 0:
+            if len(nim.strip()) == 0 or nim.strip()==nimCari:
                 nim = "-"
                 break
             else:
