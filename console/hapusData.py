@@ -35,12 +35,18 @@ while True:
 if len(dataCari) > 0:
     # tampilkan data hasil pencarian jika ada
     print(f"Data ditemukan: {dataCari}")
-    pil = input("Yakin akan dihapus (y/t)? ")
-    pil = pil.lower().strip()
+    while True:
+        pil = input("Yakin akan dihapus (y/t)? ")
+        pil = pil.lower().strip()
+        if pil in ["y", "t"]:
+            break
+        else:
+            print("Ketik 'y' untuk menghapus, atau 't' untuk membatalkan.")
+            
     if pil == "y":
-        dataBaru = ut.HapusData(nim, kamus)
+        dataBaru = ut.HapusData(nim, kamus) # data baru setelah penghapusan
         #print(f"Data terbaru: {dataBaru}")
-        mb.TulisBerkas(dataBaru)
+        mb.TulisBerkas(dataBaru) # update berkas dengan data terbaru
         print("Data berhasil dihapus dan berkas sudah diperbarui.")
     else:
         print("Data batal dihapus.")
