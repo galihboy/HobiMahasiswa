@@ -100,3 +100,89 @@ class Utilitas:
                 dataBaru.append(daftarMHS[i])
         
         return dataBaru
+    
+    def UpdateData(self, nim, daftarMHS, dataUpdate):
+        dataBaru = []
+        for i in range(len(daftarMHS)):
+            # jika NIM yang dicari tidak ditemukan
+            if daftarMHS[i][0].find(nim) == -1:
+                dataBaru.append(daftarMHS[i])
+            else:
+                dataBaru.append([dataUpdate])
+        
+        return dataBaru
+    
+    def ValidasiData(self, kamus):
+        # validasi NIM
+        while True:
+            nim = input("NIM: ")
+            # periksa format NIM
+            if self.PeriksaNIM(nim):
+                # periksa apakah NIM sudah terdaftar
+                if self.PeriksaNIMKembar(nim, kamus):
+                    print("NIM sudah terdaftar.")
+                else:
+                    break
+            else:
+                print("Format NIM tidak sesuai.")
+                
+        # validasi nama
+        while True:
+            nama = input("Nama lengkap: ")
+            # nama tidak boleh kosong
+            if len(nama.strip()) == 0:
+                print("Nama harus diisi")
+            else:
+                break
+        
+        # validasi jenis kelamin
+        while True:
+            jk = input("Jenis kelamin (l/p): ")
+            # isi jenis kelamin harus "l" atau "p"
+            if jk.lower() not in ['l','p']:
+                print("Jenis kelamin harus diisi 'l' atau 'p'")
+            else:
+                break
+            
+        return nim, nama, jk
+    
+    def ValidasiDataUpdate(self, kamus):
+        # validasi NIM
+        print("Kosongkan jika ingin menggunakan data lama.")
+        while True:
+            nim = input("NIM baru: ")
+            if len(nim.strip()) == 0:
+                nim = "-"
+                break
+            else:
+                # periksa format NIM
+                if self.PeriksaNIM(nim):
+                    # periksa apakah NIM sudah terdaftar
+                    if self.PeriksaNIMKembar(nim, kamus):
+                        print("NIM sudah terdaftar.")
+                    else:
+                        break
+                else:
+                    print("Format NIM tidak sesuai.")
+            
+        # validasi nama
+        while True:
+            nama = input("Nama lengkap baru: ")
+            if len(nama.strip()) == 0:
+                nama = "-"
+            break
+            
+        # validasi jenis kelamin
+        while True:
+            jk = input("Jenis kelamin baru (l/p): ")
+            if len(jk.strip()) == 0:
+                jk = "-"
+                break
+            else:
+                # isi jenis kelamin harus "l" atau "p"
+                if jk.lower() not in ['l','p']:
+                    print("Jenis kelamin harus diisi 'l' atau 'p'")
+                else:
+                    break
+        
+        return nim, nama, jk
