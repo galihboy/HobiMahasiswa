@@ -26,14 +26,15 @@ while True:
     if ut.PeriksaNIM(nim):
         # cari NIM dalam berkas
         # set True jika ingin menampilkan data yang sudah ditemukan
-        dataCari = ut.PeriksaNIMKembar(nim, kamus, True) 
+        dataCari = ut.CariNIM(nim, data)
         break
     else:
         print("Format NIM tidak sesuai.")
 
 if len(dataCari) > 0:
     # tampilkan data hasil pencarian jika ada
-    print(f"Data ditemukan: {dataCari}")
+    dataOutput = ut.LihatDataCari(data, dataCari)
+    print(f"Data ditemukan: {dataOutput}")
     while True:
         pil = input("Yakin akan dihapus (y/t)? ")
         pil = pil.lower().strip()
