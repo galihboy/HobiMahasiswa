@@ -31,7 +31,6 @@ while True:
     else:
         print("Format NIM tidak sesuai.")
 
-
 if len(dataCari) > 0:
     # tampilkan data hasil pencarian jika ada
     print(f"Data ditemukan: {dataCari}")
