@@ -30,7 +30,6 @@ while True:
         if ut.PeriksaNIM(nim):
             # cari NIM dalam berkas
             # set True jika ingin menampilkan data yang sudah ditemukan
-            #dataCari = ut.PeriksaNIMKembar(nim, kamus, True) 
             dataCari = ut.CariNIM(nim, data)
             break
         else:
@@ -38,7 +37,6 @@ while True:
     elif pilihan == "nama":
         nama = input("Nama yang dicari: ")
         # method cari nama dan ambil hasilnya dalam list
-        #dataCari = ut.CariNama(nama, kamus)
         dataCari = ut.CariNamaBaru(nama, data)
         break
     else:
