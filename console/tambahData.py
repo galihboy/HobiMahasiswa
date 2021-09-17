@@ -23,7 +23,7 @@ if statusFile:
     file1 = open(nmFile, "a", encoding='utf-8')
     with file1:
         # validasi data baru
-        nim, nama, jk = ut.ValidasiData(kamus)
+        nim, nama, jk = ut.ValidasiData(data)
         isi = [nim, nama, jk.lower()] # masukkan ketiga data dalam list
         isi = "#".join(isi) # gabungkan isi list dengan tanda pemisah "#"
         file1.write(isi) 
