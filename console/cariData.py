@@ -19,7 +19,6 @@ for i in data:
     d = i.split("#")
     kamus.append(d)
     
-# validasi NIM
 while True:
     pilihan = input ("Cari berdasarkan nama atau nim ? ")
     pilihan = pilihan.lower().strip()
@@ -27,6 +26,7 @@ while True:
     
     if pilihan == "nim":
         nim = input("NIM yang dicari: ")
+        # validasi NIM
         if ut.PeriksaNIM(nim):
             # cari NIM dalam berkas
             # set True jika ingin menampilkan data yang sudah ditemukan
