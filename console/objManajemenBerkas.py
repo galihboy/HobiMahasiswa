@@ -82,7 +82,10 @@ class Utilitas:
             return kembar
         else:
             return dataCari
-        
+    
+    def CariNIM(self, NIM, isiBerkas):
+        return [i for i,data in enumerate(isiBerkas) if data.split("#")[0]==NIM]
+    
     def CariNama(self, nama, daftarMHS):
         dataCari = []
         for i in range(len(daftarMHS)):
@@ -92,6 +95,17 @@ class Utilitas:
             
         return dataCari
     
+    def CariNamaBaru(self, nama, isiBerkas):
+        nama = nama.lower().strip()
+        return [i for i,x in enumerate(isiBerkas) if nama in x.split("#")[1].lower()]
+    
+    def LihatDataCari(self, isiBerkas, daftarIndeks):
+        data = []
+        for i in daftarIndeks:
+            data.append(isiBerkas[i])
+            
+        return data
+        
     def HapusData(self, nim, daftarMHS):
         dataBaru = []
         for i in range(len(daftarMHS)):
