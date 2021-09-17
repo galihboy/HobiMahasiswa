@@ -30,21 +30,25 @@ while True:
         if ut.PeriksaNIM(nim):
             # cari NIM dalam berkas
             # set True jika ingin menampilkan data yang sudah ditemukan
-            dataCari = ut.PeriksaNIMKembar(nim, kamus, True) 
+            #dataCari = ut.PeriksaNIMKembar(nim, kamus, True) 
+            dataCari = ut.CariNIM(nim, data)
             break
         else:
             print("Format NIM tidak sesuai.")
     elif pilihan == "nama":
         nama = input("Nama yang dicari: ")
         # method cari nama dan ambil hasilnya dalam list
-        dataCari = ut.CariNama(nama, kamus)
+        #dataCari = ut.CariNama(nama, kamus)
+        dataCari = ut.CariNamaBaru(nama, data)
         break
     else:
         print("Masukkan salah satu dari 'nim' atau 'nama'.")
 
 if len(dataCari) > 0:
     # tampilkan data hasil pencarian jika ada
-    print(dataCari)
+    #print(dataCari)
+    dataOutput = ut.LihatDataCari(data, dataCari)
+    print(dataOutput)
 else:
     print("Data tidak ditemukan.")
         
