@@ -26,19 +26,21 @@ while True:
     if ut.PeriksaNIM(nimCari):
         # cari NIM dalam berkas
         # set True jika ingin menampilkan data yang sudah ditemukan
-        dataCari = ut.PeriksaNIMKembar(nimCari, kamus, True) 
+        dataCari = ut.CariNIM(nimCari, data)
         break
     else:
         print("Format NIM tidak sesuai.")
         
 if len(dataCari) > 0:
     # tampilkan data hasil pencarian jika ada
-    print(f"Data ditemukan: {dataCari}")
+    dataOutput = ut.LihatDataCari(data, dataCari)
+    print(f"Data ditemukan: {dataOutput}")
     # validasi data
-    nim, nama, jk = ut.ValidasiDataUpdate(kamus)
-    nimBaru = dataCari[0] if nim == "-" else nim
-    namaBaru = dataCari[1] if nama == "-" else nama
-    jkBaru = dataCari[2] if jk == "-" else jk
+    nim, nama, jk = ut.ValidasiDataUpdate(kamus, nimCari)
+    #data.split("#")[0]
+    nimBaru = data[dataCari[0]].split("#")[0] if nim == "-" else nim
+    namaBaru = data[dataCari[0]].split("#")[1] if nama == "-" else nama
+    jkBaru = data[dataCari[0]].split("#")[2] if jk == "-" else jk
     # baris data baru
     dataUpdate = "#".join([nimBaru, namaBaru, jkBaru])
     
