@@ -43,6 +43,18 @@ class ManajemenBerkas:
             file1.close()  
         return isi
     
+    def TulisBerkas(self, kamus):
+        statusFile = self.PeriksaBerkas()
+        isi = []
+        if statusFile:
+            file1 = open(self.namaFile, "w", encoding='utf-8')
+            
+            for i in range(len(kamus)):
+                dataTulis = "#".join(kamus[i])
+                file1.write(dataTulis + "\n")
+            file1.close()  
+        return isi
+    
 class Utilitas:
     def __init__(self):
         pass
@@ -79,3 +91,12 @@ class Utilitas:
                 dataCari.append(daftarMHS[i])
             
         return dataCari
+    
+    def HapusData(self, nim, daftarMHS):
+        dataBaru = []
+        for i in range(len(daftarMHS)):
+            # jika NIM yang dicari tidak ditemukan
+            if daftarMHS[i][0].find(nim) == -1:
+                dataBaru.append(daftarMHS[i])
+        
+        return dataBaru
