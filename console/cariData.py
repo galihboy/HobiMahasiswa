@@ -21,17 +21,30 @@ for i in data:
     
 # validasi NIM
 while True:
-    nim = input("NIM: ")
-    if ut.PeriksaNIM(nim):
+    pilihan = input ("Cari berdasarkan nama atau nim ? ")
+    pilihan = pilihan.lower().strip()
+    dataCari = []
+    
+    if pilihan == "nim":
+        nim = input("NIM yang dicari: ")
+        if ut.PeriksaNIM(nim):
+            # cari NIM dalam berkas
+            # set True jika ingin menampilkan data yang sudah ditemukan
+            dataCari = ut.PeriksaNIMKembar(nim, kamus, True) 
+            break
+        else:
+            print("Format NIM tidak sesuai.")
+    elif pilihan == "nama":
+        nama = input("Nama yang dicari: ")
+        # method cari nama dan ambil hasilnya dalam list
+        dataCari = ut.CariNama(nama, kamus)
         break
     else:
-        print("Format NIM tidak sesuai.")
+        print("Masukkan salah satu dari 'nim' atau 'nama'.")
 
-# cari NIM dalam berkas
-cariNIM = ut.PeriksaNIMKembar(nim, kamus, True) # set True jika ingin menampilkan data yang sudah ditemukan
-
-if len(cariNIM) > 0:
-    print(cariNIM)
+if len(dataCari) > 0:
+    # tampilkan data hasil pencarian jika ada
+    print(dataCari)
 else:
     print("Data tidak ditemukan.")
         
