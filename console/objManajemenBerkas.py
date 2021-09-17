@@ -70,3 +70,12 @@ class Utilitas:
             return kembar
         else:
             return dataCari
+        
+    def CariNama(self, nama, daftarMHS):
+        dataCari = []
+        for i in range(len(daftarMHS)):
+            # jika Nama yang dicari ditemukan
+            if daftarMHS[i][1].find(nama) >= 0:
+                dataCari.append(daftarMHS[i])
+            
+        return dataCari
