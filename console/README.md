@@ -3,6 +3,8 @@
 
 ---
 
+**Bahasa pemrograman:** python 3.8
+
 **Berkas:**
 1. dataMahasiswa.txt
 	- berkas untuk menampung data mahasiswa sesuai dengan format atau kode berikut: 
