@@ -5,9 +5,9 @@
 **Berkas:**
 1. dataMahasiswa.txt
 	- berkas untuk menampung data mahasiswa sesuai dengan format atau kode berikut: 
-	- ```
- nim#nama#jk
- ```
+	- 	```
+		nim#nama#jk
+		```
 	- **Data mahasiswa mencakup:** nim (nomor induk mahasiswa), nama lengkap, dan jenis kelamin (jk).
 
 2. objManajemenBerkas.py
