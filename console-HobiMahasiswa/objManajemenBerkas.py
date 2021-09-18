@@ -59,6 +59,13 @@ class Utilitas:
     def __init__(self):
         pass
     
+    def CariData(self, dataCari, noKolom, isiBerkas, tepat = False):
+        dataCari = dataCari.lower().strip()
+        if tepat:
+            return [i for i,data in enumerate(isiBerkas) if data.split("#")[noKolom]==dataCari]
+        else:        
+            return [i for i,data in enumerate(isiBerkas) if dataCari in data.split("#")[noKolom].lower()]
+
     def PeriksaNIM(self, nim):
         # panjang karakter harus 8
         if len(nim.strip()) != 8:
