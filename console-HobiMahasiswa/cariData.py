@@ -19,14 +19,12 @@ def TampilData(dataCari, data):
 ut = Utilitas() 
 daftarFile = ["dataMahasiswa.txt", "dataHobi.txt", "dataMhsHobi.txt"]
 
-
-
-menu = 1
 while True:
     pilMenu = input("Cari data: \n(1) mahasiswa, \n(2) hobi, \
                     \n(3) mahasiswa beserta hobi, \
                     \n(4) hobi beserta mahasiswa, \
                     \n(0) keluar. \nTulis angka: ")
+    # cari mahasiswa
     if pilMenu == "1":
         mb = ManajemenBerkas(daftarFile[0])
         data = mb.BacaBerkas() # baca isi file
@@ -37,6 +35,7 @@ while True:
                             \n[6] tempat tinggal \n[7] tanggal terdaftar \
                             \n[8] tinggi badan \n[0] untuk keluar. \
                              \nNomor pilihan: ")
+                             
             pilihan = pilihan.lower().strip()
             dataCari = []
             
@@ -91,6 +90,7 @@ while True:
                 break
             else:
                 print("Masukkan nomor pilihan yang tersedia.")
+    # cari hobi
     elif pilMenu == "2":
         mb = ManajemenBerkas(daftarFile[1])
         data = mb.BacaBerkas() # baca isi file
@@ -98,6 +98,7 @@ while True:
         # method cari nama hobi dan ambil hasilnya dalam list
         dataCari = ut.CariData(namaHobi, 1, data)
         TampilData(dataCari, data)
+    # cari mahasiswa beserta hobi
     elif pilMenu == "3":        
         dataMhs = ManajemenBerkas(daftarFile[0]).BacaBerkas()
         dataHobi = ManajemenBerkas(daftarFile[1]).BacaBerkas()
@@ -145,6 +146,7 @@ while True:
  
         else:
             print(f"Mahasiswa dengan nama '{nama}' tidak ditemukan.")
+    # cari hobi beserta mahasiswa
     elif pilMenu == "4":        
         dataMhs = ManajemenBerkas(daftarFile[0]).BacaBerkas()
         dataHobi = ManajemenBerkas(daftarFile[1]).BacaBerkas()
