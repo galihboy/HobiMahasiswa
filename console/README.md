@@ -1,11 +1,12 @@
 ## Aplikasi console untuk mengelola data mahasiswa.
 ###### Developed by [Galih Hermawan](https://galih.eu).
 
+---
 
 **Berkas:**
 1. dataMahasiswa.txt
 	- berkas untuk menampung data mahasiswa sesuai dengan format atau kode berikut: 
-	- 	```
+	 	```
 		nim#nama#jk
 		```
 	- **Data mahasiswa mencakup:** nim (nomor induk mahasiswa), nama lengkap, dan jenis kelamin (jk).
