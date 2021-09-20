@@ -1,0 +1,6 @@
+# delimiter atau pemisah antar kolom cukup pilih satu karakter (string) yang dianggap unik (atau jarang digunakan)
+delimiter-kolom=#
+# format : "file[nama file]={kolom1#kolom2#...}
+file[dataMahasiswa.txt]={nim#nama#kota lahir#tanggal lahir#jenis kelamin#kota tinggal#tanggal daftar#tinggi}
+file[dataHobi.txt]={kode hobi#nama hobi}
+file[dataMhsHobi.txt]={nim#kode hobi} 

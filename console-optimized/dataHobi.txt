@@ -1,0 +1,13 @@
+h01#Sepak Bola
+h02#Bola Basket
+h03#Bulu Tangkis
+h04#Tidur
+h05#Game
+h06#Futsal
+h07#Catur
+h08#Bola Voli
+h09#Karate
+h10#Tinju
+h11#Taekwondo
+h12#Rekreasi
+h13#makan
