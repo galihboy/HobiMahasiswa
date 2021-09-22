@@ -49,18 +49,25 @@ class ManajemenBerkas:
             file1.close()  
         return self.BersihkanEmptyList(isi)
     
-    def TulisBerkas(self, kamus):
+    def TulisBerkas(self, listData):
         statusFile = self.PeriksaBerkas()
-        isi = []
         if statusFile:
             file1 = open(self.namaFile, "w", encoding='utf-8')
-            
-            for i in range(len(kamus)):
-                dataTulis = "#".join(kamus[i])
-                file1.write(dataTulis + "\n")
-            file1.close()  
-        return isi
+            with file1:    
+                for d in listData:
+                    file1.write(d + "\n")
+            file1.close()
     
+    def TambahDataBerkas(self, barisData):
+        statusFile = self.PeriksaBerkas()
+        if statusFile:
+            file1 = open(self.namaFile, "a", encoding='utf-8')
+            with file1:    
+                file1.write("\n" + barisData)
+            file1.close()  
+            self.RapikanBerkas()
+        #return self.BersihkanEmptyList(isi)
+
     # baca file, bersihkan empty values, tulis ulang
     def RapikanBerkas(self):
         statusFile = self.PeriksaBerkas()
@@ -79,6 +86,12 @@ class UtilitasFileKode:
     polaKodeData = "{.*}"
     polaNamaFile = "^file\[.*\]"
     polaBaris = "^file\[.*\]={.*}$"
+    #--------------------------------------
+    polaBarisPola = "^pola\[.*\]={.*}$"
+    polaNamaFilePola = "^pola\[.*\]"
+    polaDataPola = "{.*}"
+    polaDataUmum = "^.+$"
+    #--------------------------------------
     fileKode = "kodeData.txt"
     mb = ManajemenBerkas(fileKode)
     
@@ -133,6 +146,26 @@ class UtilitasFileKode:
                 daftarKode.append(kodeFile)
                 daftarNamaFile.append(nmFile)
             #print(f"{nmFile} : {cekPola}")
+        return daftarNamaFile, daftarKode
+    
+    # mengambil daftar nama file penyimpanan dan daftar kode (mentah/raw)
+    def AmbilKodePola(self):
+        kode = self.mb.BacaBerkas()
+        daftarNamaFile = []
+        daftarKode = []
+        for i in kode:
+            i = i.strip()
+            cekPola = re.match(self.polaBarisPola, i)
+            if cekPola:
+                nmFile = re.findall(self.polaNamaFilePola, i)
+                nmFile = re.sub("pola\[|\]","", nmFile[0])
+                kodeFile = re.findall(self.polaDataPola, i)
+                kodeFile = re.sub("{{|}}", "", kodeFile[0])
+                daftarKode.append(kodeFile)
+                daftarNamaFile.append(nmFile)
+            #print(f"{nmFile} : {cekPola}")
+        # pola kolom yang kosong diisi dengan pola umum
+        #daftarKode = [self.polaUmum if d=="" else d for i, d in enumerate(daftarKode)]
         return daftarNamaFile, daftarKode
 
     # mengorganisir dalam kamus berupa nama file dan list nama kolom
@@ -279,3 +312,10 @@ class Utilitas:
             listDataLuaran.append(self.AmbilData(nmrBarisKolomTarget, dataTarget, delimiter, nmrKolomTarget)[0])
         
         return listDataLuaran
+    
+    # fitur update file
+    # cari baris data lama, jika ketemu ganti dengan baris data baru
+    # luaran berupa semua baris data yang siap disimpan ke file
+    def UpdateData(self, barisDataLama, barisDataBaru, sumberData):
+        dataBaru = [barisDataBaru if d==barisDataLama else d for d in sumberData]
+        return dataBaru
