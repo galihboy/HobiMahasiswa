@@ -49,13 +49,13 @@ pil = input(f"Tulis angka menu ({lstStrPil}) atau ketik apapun untuk keluar : ")
 
 if pil.isdigit(): pil = int(pil)
 
-# menu input data mahasiswa
+# menu update data mahasiswa
 if pil == 1:
     pass
 # menu update data hobi
 elif pil==2:
     kodeCari = input("Masukkan kode hobi: ")
-    barisHobiDitemukan = ut.CariData(kodeCari, 0, dataHobi, delimiter)
+    barisHobiDitemukan = ut.CariData(kodeCari, 0, dataHobi, delimiter, True)
     if barisHobiDitemukan:
         nmHobiBaruSudahAda = False
         barisDataLama = ut.AmbilData(barisHobiDitemukan, dataHobi, delimiter)[0]
@@ -66,7 +66,7 @@ elif pil==2:
         if nmHobi:
             nmHobiBaru = nmHobi
             # cek apakah hobi baru sudah pernah ada di data hobi
-            nmHobiBaruSudahAda = ut.CariData(nmHobiBaru, 1, dataHobi, delimiter)
+            nmHobiBaruSudahAda = ut.CariData(nmHobiBaru, 1, dataHobi, delimiter, True)
         else:
             nmHobiBaru = nmHobiLama
         
@@ -82,7 +82,42 @@ elif pil==2:
         print(f"Data kode hobi '{kodeCari}' tidak ditemukan.")
 # menu update data mhshobi
 elif pil==3:
-    pass
+    kodeCari = input("Masukkan nim: ")
+    barisMhsDitemukan = ut.CariData(kodeCari, 0, dataMhsHobi, delimiter, True)
+    if barisMhsDitemukan:
+        nmHobiBaruSudahAda = False
+        # jml hobi mungkin lebih dari satu
+        barisDataLama = ut.AmbilData(barisMhsDitemukan, dataMhsHobi, delimiter)
+        kodeHobiLama = ut.AmbilData(barisMhsDitemukan, dataMhsHobi, delimiter, [1])
+        lstKodeHobiBaru = []
+        print(f"Kode hobi lama: {kodeHobiLama}")
+        print("Kosongkan data jika ingin menggunakan data lama.")
+        for i, data in enumerate(kodeHobiLama):
+            while True:
+                kodeHobi = input(f"Data lama {i+1}: '{kodeHobiLama[i]}', data baru: ")
+                kodeHobi.strip()
+                # periksa apakah kodehobi terdaftar di data Hobi
+                kodeHobiTerdaftar = ut.CariData(kodeHobi, 0, dataHobi, delimiter, True)
+                if not kodeHobi: #kodehobi dikosongkan, menyimpan data lama
+                    lstKodeHobiBaru.append(data)
+                    break
+                elif not kodeHobiTerdaftar:
+                    print(f"Kode hobi {kodeHobi} belum terdaftar di data Hobi.")
+                elif kodeHobi in kodeHobiLama and kodeHobi != data:
+                    print(f"Kode hobi {kodeHobi} sudah pernah disimpan.")
+                else:
+                    lstKodeHobiBaru.append(kodeHobi)
+                    break
+           
+        barisDataBaru = [delimiter.join([kodeCari,i] )for i in lstKodeHobiBaru]   
+        
+        print("Data baru: ",barisDataBaru)
+        dataBaru = ut.UpdateData(barisDataLama, barisDataBaru, dataMhsHobi)
+        #print(dataBaru)
+        ManajemenBerkas(fMhsHobi).TulisBerkas(dataBaru)
+        print("Pembaruan data berhasil dilakukan.")
+    else:
+        print(f"Data kode hobi '{kodeCari}' tidak ditemukan.")
 else:
     print("Keluar aplikasi.")
 
