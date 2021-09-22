@@ -82,7 +82,7 @@ if pil == 1:
         print('-----------------------------------------------')
 # menu input data hobi
 elif pil==2:
-    lstDataMasukan = []
+    lstDataMasukan = [None] * len(daftarKode[1]) # inisialisasi list ukuran hobi
     print("Masukkan data hobi berikut.")
     for i, data in enumerate(daftarKode[1]):
         while True:
@@ -93,8 +93,17 @@ elif pil==2:
                 if kodeHobi_Kembar:
                     print("Kode hobi sudah terdaftar.")
                 else:
-                    lstDataMasukan.append(dataMasukan)
-                    break
+                    # khusus pengecekan nama hobi kembar pada looping ke-2
+                    if i == 1:
+                        nmHobiBaruSudahAda = ut.CariData(dataMasukan, 1, dataHobi, delimiter)
+                        if nmHobiBaruSudahAda:
+                            print(f"Hobi '{dataMasukan}' sudah ada.")
+                        else:
+                            lstDataMasukan[1] = (dataMasukan)
+                            break
+                    else:
+                        lstDataMasukan[0] = (dataMasukan)
+                        break
             else:
                 print(f"Format {data} salah.")
     
@@ -114,7 +123,7 @@ elif pil==2:
 # menu input data mhshobi
 elif pil==3:
     lstDataMasukan = []
-    iJawab = ["x","x"]
+    iJawab =  ["tes"] * len(daftarKode[2]) # inisialisasi list ukuran mhshobi
     print("Masukkan data mhshobi berikut.")
     for i, data in enumerate(daftarKode[2]):
         while True:
