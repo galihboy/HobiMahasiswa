@@ -33,6 +33,10 @@ print("\n___ 03 ___")
 for i, data in enumerate(lstFile):
     print(f"File {i+1} : {data} \nKolom : {lstKolom[i]}")
 print("__________")
+lstPolaFile, lstKolomPola = utFK.AmbilKodePola()
+for i, data in enumerate(lstPolaFile):
+    print(f"Pola {i+1} : {data} \nKolom : {lstKolomPola[i]}")
+print("__________")
 #===========================================================
 
 #=== 04. Konversi baris format kode [mahasiswa] ke bentuk list ===
