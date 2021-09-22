@@ -18,7 +18,6 @@ dataHobi = ManajemenBerkas(lstFile[1]).BacaBerkas()
 dataMhsHobi = ManajemenBerkas(lstFile[2]).BacaBerkas()
 kamus = utFK.KamusFile_Kode(delimiter)
 
-
 while True:
     pilMenu = input("Menu Utama. Cari data: \n(1) mahasiswa, \n(2) hobi, \
                     \n(3) mahasiswa beserta hobi, \
@@ -144,7 +143,7 @@ while True:
             nomorIndeksKolom = ut.IndeksKolom(namaKolom, fHobi, kamus)
             nomorIndeksKolomPK = ut.IndeksKolom(namaKolomPK, fHobi, kamus)
             daftarBarisHobi = ut.CariData(nama, nomorIndeksKolom, dataHobi, delimiter)
-            kolomRelasi_Mhs_Hobi = "nim" # atribut Foreign Key (sekutu) MhsHobi dan Hobi
+            kolomRelasi_Mhs_Hobi = "nim" # atribut Foreign Key (sekutu) MhsHobi dan Mahasiswa
             kolomOutput = ["nim","nama"] # data kolom yang ingin diperoleh
             
             if len(daftarBarisHobi) == 0:
