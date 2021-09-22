@@ -221,12 +221,6 @@ class UtilitasFileKode:
         return statusVerifikasiAll
     
 class Utilitas:
-    # RegEx
-    # tanggal = yyyy-mm-dd
-    polaTanggal = "^(?:19|20)\d\d(-)(?:0[1-9]|1[012])(-)(?:0[1-9]|[12]\d|3[01])$"
-    # kode hobi = haa -> a: angka
-    polaKodeHobi = "^(h)(?:0[1-9]|\d\d)$"
-    
     def __init__(self):
         pass
 
@@ -315,7 +309,12 @@ class Utilitas:
     
     # fitur update file
     # cari baris data lama, jika ketemu ganti dengan baris data baru
-    # luaran berupa semua baris data yang siap disimpan ke file
+    # luaran berupa list (semua baris data) yang siap disimpan ke file
     def UpdateData(self, barisDataLama, barisDataBaru, sumberData):
-        dataBaru = [barisDataBaru if d==barisDataLama else d for d in sumberData]
-        return dataBaru
+        # untuk masukan banyak baris data baru 
+        if isinstance(barisDataBaru, list):
+            for i, data in enumerate(barisDataBaru):
+                sumberData = [data if d==barisDataLama[i] else d for d in sumberData]
+        else: # untuk masukan satu baris data baru 
+            sumberData = [barisDataBaru if d==barisDataLama else d for d in sumberData]
+        return sumberData
