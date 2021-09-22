@@ -4,3 +4,10 @@ delimiter-kolom=#
 file[dataMahasiswa.txt]={nim#nama#kota lahir#tanggal lahir#jenis kelamin#kota tinggal#tanggal daftar#tinggi}
 file[dataHobi.txt]={kode hobi#nama hobi}
 file[dataMhsHobi.txt]={nim#kode hobi} 
+
+# format pola regular expression
+# pola[nama file]={{pola1#pola2#...}}
+# kolom pola dapat dikosongkan jika dapat diisi sembarang karakter minimal 1
+pola[dataMahasiswa.txt]={{^\d{8}$###^(?:19|20)\d\d(-)(?:0[1-9]|1[012])(-)(?:0[1-9]|[12]\d|3[01])$#^(l|L|p|P)$##^(?:19|20)\d\d(-)(?:0[1-9]|1[012])(-)(?:0[1-9]|[12]\d|3[01])$#^\d{2,3}$}}
+pola[dataHobi.txt]={{^(h|H)(?:0[1-9]|\d[1-9])$#}}
+pola[dataMhsHobi.txt]={{^\d{8}$#^(h|H)(?:0[1-9]|\d[1-9])$}}
