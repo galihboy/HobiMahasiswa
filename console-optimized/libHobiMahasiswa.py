@@ -318,3 +318,16 @@ class Utilitas:
         else: # untuk masukan satu baris data baru 
             sumberData = [barisDataBaru if d==barisDataLama else d for d in sumberData]
         return sumberData
+
+    # fitur hapus data
+    # barisData = data yang akan dihapus
+    def HapusData(self, barisData, sumberData):
+        # untuk masukan banyak baris data baru 
+        if isinstance(barisData, list):
+            for i, data in enumerate(barisData):
+                #sumberData = [data if d==barisDataLama[i] else d for d in sumberData]
+                sumberData.remove(data)
+        else: # untuk masukan satu baris data baru 
+            #sumberData = [barisDataBaru if d==barisDataLama else d for d in sumberData]
+            sumberData.remove(barisData)
+        return sumberData
