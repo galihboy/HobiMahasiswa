@@ -7,16 +7,11 @@ Created on Wed Sep 22 22:19:35 2021
 
 
 from libHobiMahasiswa import ManajemenBerkas, UtilitasFileKode, Utilitas
-import re
 
 ut = Utilitas()
 utFK = UtilitasFileKode() 
 delimiter = utFK.PemisahKolom()
 lstFile, lstKolomKode = utFK.AmbilKodeDataFile()
-lstPolaFile, lstKolomPola = utFK.AmbilKodePola()
-
-# pola regex untuk menerima minimal 1 karakter apapun
-polaUmum = "^.+$"
 
 fMhs, fHobi, fMhsHobi = lstFile[0], lstFile[1], lstFile[2]
 
@@ -24,16 +19,6 @@ dataMhs = ManajemenBerkas(lstFile[0]).BacaBerkas()
 dataHobi = ManajemenBerkas(lstFile[1]).BacaBerkas()
 dataMhsHobi = ManajemenBerkas(lstFile[2]).BacaBerkas()
 kamus = utFK.KamusFile_Kode(delimiter)
-
-daftarKode = utFK.DaftarKolom(lstKolomKode, delimiter)
-daftarPola = utFK.DaftarKolom(lstKolomPola, delimiter)
-# pola kolom yang kosong diisi dengan pola umum
-for dp in range(len(daftarPola)):
-    daftarPola[dp] = [polaUmum if d=="" else d for i, d in enumerate(daftarPola[dp])]
-
-polaMhs = daftarPola[0]
-polaHobi = daftarPola[1]
-polaMhsHobi = daftarPola[2]
 
 # tampil menu
 lstPil = []
@@ -52,7 +37,7 @@ if pil.isdigit(): pil = int(pil)
 
 # menu hapus data mahasiswa
 if pil == 1:
-    kodeCari = input("Masukkan NIM1: ")
+    kodeCari = input("Masukkan NIM: ")
     barisMhsDitemukan = ut.CariData(kodeCari, 0, dataMhs, delimiter, True)
     if barisMhsDitemukan:
         nimFK = ut.CariData(kodeCari, 0, dataMhsHobi, delimiter, True)
@@ -70,7 +55,7 @@ if pil == 1:
             else:
                 print("Penghapusan data dibatalkan.")
     else:
-        print(f"Data kode hobi '{kodeCari}' tidak ditemukan.")
+        print(f"Data nim '{kodeCari}' tidak ditemukan.")
 # menu hapus data hobi
 elif pil==2:
     kodeCari = input("Masukkan kode hobi: ")
@@ -94,6 +79,40 @@ elif pil==2:
         print(f"Data kode hobi '{kodeCari}' tidak ditemukan.")
 # menu hapus data mhshobi
 elif pil==3:
-    pass
+    kodeCari = input("Masukkan NIM: ")
+    barisMhsDitemukan = ut.CariData(kodeCari, 0, dataMhsHobi, delimiter, True)
+    if barisMhsDitemukan:
+        lstMhsHobi = ut.AmbilData(barisMhsDitemukan, dataMhsHobi, delimiter)
+        lstKodeHobi = ut.AmbilData(barisMhsDitemukan, dataMhsHobi, delimiter,[1])
+        print(f"Kode hobi yang sedang diminati adalah : {lstKodeHobi}")
+        while True:
+            pilKodeHobi = input("Masukkan kode hobi yang akan dihapus: ")
+            pilKetemu = ut.CariData(pilKodeHobi, 1, lstMhsHobi, delimiter, True)
+            if pilKetemu:
+                dataHapus = delimiter.join([kodeCari, pilKodeHobi])
+                tanya = input(f"Data yang akan dihapus '{dataHapus}'. Lanjut dihapus (y/t) ? ")
+                if tanya.lower().strip() == "y":
+                    dataBaru = ut.HapusData(dataHapus, dataMhsHobi)
+                    #print(dataBaru)
+                    ManajemenBerkas(fMhsHobi).TulisBerkas(dataBaru)
+                    print("Penghapusan data berhasil dilakukan.")
+                    break
+                else:
+                    print("Penghapusan dibatalkan.")
+                    break
+            else:
+                print(f"Kode hobi '{pilKodeHobi}' untuk nim '{kodeCari}' tidak ditemukan di data MhsHobi.")
+                
+       # barisDataLama = ut.AmbilData(barisMhsDitemukan, dataMhsHobi, delimiter)
+       # tanya = input(f"Yakin akan menghapus data '{barisDataLama}' ? (y/t) = ")
+       # if tanya.lower().strip() == "y":
+       #     dataBaru = ut.HapusData(barisDataLama, dataMhsHobi)
+       #     print(dataBaru)
+            #ManajemenBerkas(fMhsHobi).TulisBerkas(dataBaru)
+       #     print("Penghapusan data berhasil dilakukan.")
+       # else:
+       #     print("Penghapusan data dibatalkan.")
+    else:
+        print(f"Data nim '{kodeCari}' tidak ditemukan.")
 else:
     print("Keluar aplikasi.")
