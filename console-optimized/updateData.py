@@ -51,7 +51,38 @@ if pil.isdigit(): pil = int(pil)
 
 # menu update data mahasiswa
 if pil == 1:
-    pass
+    lstDataMasukan = []
+    kodeCari = input("Masukkan nim: ")
+    barisMhsDitemukan = ut.CariData(kodeCari, 0, dataMhs, delimiter, True)
+    if barisMhsDitemukan:
+        lstDataMasukan.append(kodeCari)
+        barisDataLama = ut.AmbilData(barisMhsDitemukan, dataMhs, delimiter)[0]
+        print("Kosongkan data jika akan menggunakan data lama.")
+        for i in range(1,len(daftarKode[0])):
+            nmKolom = daftarKode[0][i]
+            dataKolom = dataMhsDitemukan = ut.AmbilData(barisMhsDitemukan, dataMhs, delimiter, [i])
+            while True:    
+                dataMasukan = input(f"Data {nmKolom} lama '{dataKolom[0]}', data baru: ")            
+                if dataMasukan.strip():
+                    if re.match(polaMhs[i], dataMasukan):
+                        dataKolomBaru = dataMasukan
+                        break
+                    else:
+                        print(f"Format '{nmKolom}' tidak sesuai.")
+                else:
+                    dataKolomBaru = dataKolom[0]
+                    break
+            lstDataMasukan.append(dataKolomBaru)
+        #print("Data baru: ",lstDataMasukan)
+        barisDataBaru = delimiter.join(lstDataMasukan)
+        #print(barisDataBaru)
+        dataBaru = ut.UpdateData(barisDataLama, barisDataBaru, dataMhs)
+        #print(dataBaru)
+        ManajemenBerkas(fMhs).TulisBerkas(dataBaru)
+        print("Pembaruan data berhasil dilakukan.")
+    else:
+        print(f"Data nim '{kodeCari}' tidak ditemukan.")
+
 # menu update data hobi
 elif pil==2:
     kodeCari = input("Masukkan kode hobi: ")
