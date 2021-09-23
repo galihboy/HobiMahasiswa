@@ -102,16 +102,6 @@ elif pil==3:
                     break
             else:
                 print(f"Kode hobi '{pilKodeHobi}' untuk nim '{kodeCari}' tidak ditemukan di data MhsHobi.")
-                
-       # barisDataLama = ut.AmbilData(barisMhsDitemukan, dataMhsHobi, delimiter)
-       # tanya = input(f"Yakin akan menghapus data '{barisDataLama}' ? (y/t) = ")
-       # if tanya.lower().strip() == "y":
-       #     dataBaru = ut.HapusData(barisDataLama, dataMhsHobi)
-       #     print(dataBaru)
-            #ManajemenBerkas(fMhsHobi).TulisBerkas(dataBaru)
-       #     print("Penghapusan data berhasil dilakukan.")
-       # else:
-       #     print("Penghapusan data dibatalkan.")
     else:
         print(f"Data nim '{kodeCari}' tidak ditemukan.")
 else:
