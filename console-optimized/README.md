@@ -61,4 +61,5 @@ Aplikasi ini dibangun sebagai sarana edukasi untuk mendemokan bagaimana mengakse
 | lain-lain     | bebas (alpha numeric) minimal 1 karakter |
 
 Contoh antarmuka cari data.
+
 ![cari data](/console-optimized/screenshot.png)
