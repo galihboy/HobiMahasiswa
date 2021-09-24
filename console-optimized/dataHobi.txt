@@ -1,13 +1,14 @@
 h01#Sepak Bola
 h02#Bola Basket
 h03#Bulu Tangkis
-h04#Tidur
-h05#Game
+h04#tidur terus
+h05#main game
 h06#Futsal
 h07#Catur
 h08#Bola Voli
-h09#Karate
+h09#karateka
 h10#Tinju
 h11#Taekwondo
 h12#Rekreasi
-h13#makan
+h15#Lari
+h16#sepak takraw

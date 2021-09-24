@@ -5,7 +5,7 @@
 10110003#Damri#Surabaya#2001-12-10#l#Malang#2019-08-10#170
 10110007#Reni#Lampung#2001-01-01#p#Jakarta#2019-08-11#170
 10110008#Gunawan#Jember#2001-03-20#l#Bandung#2019-08-01#174
-10110009#Budi Sudjarwo#Malang#2000-01-11#l#Malang#2018-08-01#172
+10110009#Budi Sudjarwo#Malang#1999-01-01#l#Malang#2017-05-05#177
 10110012#Budi Indah#Jakarta#2000-07-01#l#Surabaya#2018-08-01#169
 10110014#Yuliati Romlah#Bandung#2001-04-04#p#Bandung#2018-08-07#167
 10110016#Wahyudi#Subang#2002-01-01#l#Bandung#2018-07-07#177
@@ -13,3 +13,6 @@
 10110004#Linda Iswati#Magelang#2000-10-01#p#Bandung#2018-08-08#165
 10110013#Radjiman#Surakarta#2000-12-13#l#Bantul#2017-01-01#167
 10110017#Susanti#Malang#2001-12-10#p#Sumenep#2002-01-01#166
+10120001#Anisah#jakarta#2000-06-07#p#SUmbawa#2020-01-01#167
+10101010#intan sukma#jakarta#2001-04-05#p#bandung#2020-06-06#169
+10101019#yuid#solo#1990-04-05#l#magelang#2020-05-06#190
