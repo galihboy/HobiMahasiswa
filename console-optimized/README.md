@@ -44,16 +44,19 @@ Aplikasi ini dibangun sebagai sarana edukasi untuk mendemokan bagaimana mengakse
 7. hapusData.py
 	- fitur menghapus data
 	- data mahasiswa dan hobi, yang kolom uniknya menjadi tamu (FK) di data mhshobi, tidak bisa dihapus
-8. testing.py
+8. menu.py
+	- menampilkan halaman menu utama (menampilkan semua jenis akses)
+9. testing.py
 	- untuk menguji sebagian fitur/metode yang ada di libHobiMahasiswa
 	
 **Format data masukan (dan makna pola RegEx).**
 
-```
-nim = wajib delapan digit angka
-tipe tanggal = yyyy-mm-dd (tahun-bulan-tanggal)
-jenis kelamin (jk) = l/p
-kode hobi = hxx (xx adalah angka 01-99)
-tinggi badan = 2-3 digit angka
-selain itu bebas (alpha numeric) minimal 1 karakter
-```
+| Kolom         | Keterangan |
+| ------------- | ----------- |
+| nim           | wajib delapan digit angka       |
+| tipe tanggal  | yyyy-mm-dd (tahun-bulan-tanggal)        |
+| jenis kelamin | l/p |
+| kode hobi     | hxx (xx adalah angka 01-99) |
+| tinggi badan  | 2-3 digit angka |
+| lain-lain     | bebas (alpha numeric) minimal 1 karakter |
+
