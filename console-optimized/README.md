@@ -1,7 +1,8 @@
 ## Aplikasi console untuk mengelola data mahasiswa, hobi dan mahasiswa hobi.
 ###### Developed by [Galih Hermawan](https://galih.eu).
-
 ---
+
+Aplikasi ini dibangun sebagai sarana edukasi untuk mendemokan bagaimana mengakses data yang tersimpan dalam file teks. Data disimpan dengan menggunakan pola atau format tertentu yang ditetapkan. Berikutnya melalui aplikasi (berbasis console) dapat dilakukan pengaksesan atau pengelolaan data, seperti: melihat, mencari, memperbarui, menambah, dan menghapus data.
 
 **Bahasa pemrograman:** python 3.8
 
