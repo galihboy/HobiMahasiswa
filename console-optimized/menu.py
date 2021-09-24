@@ -3,6 +3,9 @@
 Created on Fri Sep 24 21:48:12 2021
 
 @author: galih-hermawan
+Github: https://github.com/galihboy/HobiMahasiswa
+Web: http://galih.eu
+Mail: galih.hermawan@gmail.com
 """
 
 from libHobiMahasiswa import UtilitasFileKode
