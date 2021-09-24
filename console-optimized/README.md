@@ -60,3 +60,5 @@ Aplikasi ini dibangun sebagai sarana edukasi untuk mendemokan bagaimana mengakse
 | tinggi badan  | 2-3 digit angka |
 | lain-lain     | bebas (alpha numeric) minimal 1 karakter |
 
+Contoh antarmuka cari data.
+![cari data](/screenshot.png)
